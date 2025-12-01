@@ -1,5 +1,8 @@
 import { z } from 'zod';
 
+const priorities = ['Baixa', 'Média', 'Alta'] as const;
+const statuses = ['Pendente', 'Em andamento', 'Concluída', 'Cancelada'] as const;
+
 export const createTaskSchema = z.object({
   title: z
     .string('O título é obrigatório')
@@ -10,4 +13,15 @@ export const createTaskSchema = z.object({
     .date()
     .optional()
     .refine((date) => !date || date > new Date(), 'A data de vencimento não pode ser no passado'),
+});
+
+export const updateTaskSchema = z.object({
+  title: z
+    .string('O título é obrigatório')
+    .min(3, 'O título deve ter pelo menos 3 caracteres')
+    .max(100, 'O título não pode exceder 100 caracteres'),
+  description: z.string().max(500, 'A descrição não pode exceder 500 caracteres').optional(),
+  due_date: z.date().optional(),
+  priority: z.enum(priorities, 'Selecione uma prioridade válida'),
+  status: z.enum(statuses, 'Selecione um status válido'),
 });

@@ -7,4 +7,11 @@
 
 export * from './taskTypes';
 export * from './taskService';
-export * from './taskValidation';
+export {
+  createTaskSchema,
+  updateTaskSchema,
+  paramsSchema as taskParamsSchema,
+  type CreateTaskInput,
+  type UpdateTaskInput,
+  type ParamsInput as TaskParamsInput,
+} from './taskValidation';

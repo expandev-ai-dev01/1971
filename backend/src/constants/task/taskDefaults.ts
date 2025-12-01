@@ -29,11 +29,26 @@ export type TaskLimitsType = typeof TASK_LIMITS;
  */
 export const TASK_STATUS = {
   PENDING: 'Pendente',
+  IN_PROGRESS: 'Em andamento',
   COMPLETED: 'Concluída',
+  CANCELLED: 'Cancelada',
 } as const;
 
 /** Type representing the TASK_STATUS constant */
 export type TaskStatusType = typeof TASK_STATUS;
+
+/**
+ * @interface TaskPriorityType
+ * @description Available priority levels for Task entities.
+ */
+export const TASK_PRIORITY = {
+  LOW: 'Baixa',
+  MEDIUM: 'Média',
+  HIGH: 'Alta',
+} as const;
+
+/** Type representing the TASK_PRIORITY constant */
+export type TaskPriorityType = typeof TASK_PRIORITY;
 
 /**
  * @interface TaskDefaultsType
@@ -41,5 +56,6 @@ export type TaskStatusType = typeof TASK_STATUS;
  */
 export const TASK_DEFAULTS = {
   INITIAL_STATUS: TASK_STATUS.PENDING,
+  INITIAL_PRIORITY: TASK_PRIORITY.MEDIUM,
   MAX_RECORDS: 1000,
 } as const;

@@ -39,6 +39,40 @@ class TaskStore {
   getAll(): TaskEntity[] {
     return Array.from(this.records.values());
   }
+
+  /**
+   * Update existing record
+   */
+  update(id: string, data: Partial<TaskEntity>): TaskEntity | undefined {
+    const existing = this.records.get(id);
+    if (!existing) {
+      return undefined;
+    }
+    const updated = { ...existing, ...data };
+    this.records.set(id, updated);
+    return updated;
+  }
+
+  /**
+   * Check if record exists
+   */
+  exists(id: string): boolean {
+    return this.records.has(id);
+  }
+
+  /**
+   * Get total count of records
+   */
+  count(): number {
+    return this.records.size;
+  }
+
+  /**
+   * Clear all records (useful for testing)
+   */
+  clear(): void {
+    this.records.clear();
+  }
 }
 
 /**

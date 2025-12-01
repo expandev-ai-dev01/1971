@@ -12,6 +12,9 @@ const NotFoundPage = lazy(() =>
 const TaskCreatePage = lazy(() =>
   import('@/pages/TaskCreate').then((module) => ({ default: module.TaskCreatePage }))
 );
+const TaskEditPage = lazy(() =>
+  import('@/pages/TaskEdit').then((module) => ({ default: module.TaskEditPage }))
+);
 
 const routes = createBrowserRouter([
   {
@@ -35,6 +38,10 @@ const routes = createBrowserRouter([
       {
         path: 'tasks/new',
         element: <TaskCreatePage />,
+      },
+      {
+        path: 'tasks/:id/edit',
+        element: <TaskEditPage />,
       },
       {
         path: '*',

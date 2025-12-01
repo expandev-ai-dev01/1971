@@ -10,6 +10,7 @@ import { Router } from 'express';
 import { authMiddleware } from '@/middleware';
 import * as initExampleController from '@/api/internal/init-example/controller';
 import * as taskController from '@/api/internal/task/controller';
+import * as taskDetailController from '@/api/internal/task/detail/controller';
 
 const router = Router();
 
@@ -28,5 +29,7 @@ router.delete('/init-example/:id', initExampleController.deleteHandler);
  * Task routes - /api/internal/task
  */
 router.post('/task', authMiddleware, taskController.createHandler);
+router.get('/task/:id', authMiddleware, taskDetailController.getHandler);
+router.put('/task/:id', authMiddleware, taskDetailController.updateHandler);
 
 export default router;

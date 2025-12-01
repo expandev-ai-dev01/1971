@@ -7,4 +7,13 @@
 
 export * from './initExampleTypes';
 export * from './initExampleService';
-export * from './initExampleValidation';
+export {
+  metadataSchema,
+  createSchema,
+  updateSchema,
+  paramsSchema as initExampleParamsSchema,
+  type MetadataInput,
+  type CreateInput,
+  type UpdateInput,
+  type ParamsInput as InitExampleParamsInput,
+} from './initExampleValidation';
